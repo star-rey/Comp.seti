@@ -3,23 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Задание 2</title>
-    <style>
-    body { padding: 20px; }
-    pre { font-family: monospace; font-size: 14px; line-height: 1; }
-  </style>
+    <title>Добыча драгоценных камней</title>
+</head>
+<style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 20px;
+      background: #fff;
+    }
 
+    .table-title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      position: relative;
+      padding-bottom: 8px;
+    }
+    .table-title::after {
+      content: "";
+      display: block;
+      height: 6px;
+      background: #1f2b4a;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 760px;           
+      margin: 24px auto;
+      border: 2px solid #333;
+      table-layout: fixed;
+    }
+
+    th, td {
+      border: 1px solid #8b8b8b;
+      padding: 14px 10px;
+      text-align: center;
+      vertical-align: middle;
+      background: #fff;
+      color: #000;
+      word-wrap: break-word;
+    }
+    thead th {
+      background: #FF0000;
+      color: #fff;
+      font-weight: 700;
+    }
+    tbody td:first-child {
+      background: #009999;
+      color: #fff;
+      font-weight: 700;
+      text-align: left;
+      padding-left: 18px;
+    }
+    td.empty {
+      background: #fff;
+      color: #000;
+    }
+    .num { text-align: center; }
+  </style>
 </head>
 <body>
-    
-<pre>
-        /        /         /      /  
-   /  /    /  /    /   /    /  /  
-  /  /    /  /    /  _/    /  /    
-         /   /    /   /     /   /    / 
-        /   /    /   /     /   /    /  
-    __//___/____/___/____/___/____/   
-</pre>
+
+  <div class="table-title">Добыча драгоценных камней</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>2014</th>
+        <th>2015</th>
+        <th>2016</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Сапфиры</td>
+        <td class="num">1483</td>
+        <td class="num">4532</td>
+        <td class="num">6743</td>
+      </tr>
+      <tr>
+        <td>Рубины</td>
+        <td class="empty"></td>
+        <td class="num">3835</td>
+        <td class="num">7482</td>
+      </tr>
+      <tr>
+        <td>Алмазы</td>
+        <td class="num">683</td>
+        <td class="num">238</td>
+        <td class="empty"></td>
+      </tr>
+    </tbody>
+  </table>
 
 </body>
 </html>
