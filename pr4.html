@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Заголовки</title>
+    <title>Селекторы CSS</title>
     <style>
-        h1{color: #a6780a; font-weight: normal;}
-        h2{color: olive; border-bottom: 2px solid black;}
+        #main p{
+            font-size: 16px;
+        }
+        #footer p{
+            font-size: 13px;
+        }
     </style>
 </head>
 <body>
-    <h1>Заголовок 1</h1>
-    <h2>Заголовок 2</h2>
+    <div id="main">
+        <p>Первый абзац</p>
+        <p>Второй абзац</p>
+    </div>
+    <div id="footer">
+        <p>Текст футера</p>
+    </div>
 </body>
 </html>

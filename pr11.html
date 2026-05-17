@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Идентификаторы CSS</title>
-    <link rel="stylesheet" href="pr11.css" >
+    <title>Дочерние селекторы</title>
+    <style>
+div i{
+    color: green;
+}
+p>i{
+    color: red;
+}
+    </style>
 </head>
 <body>
-    <div id="header">Шапка сайта</div>
-    <div id="content">Основное содержимое</div>
-    <div id="footer">Футер</div>
+    <div>
+        <p><i>Lorem ipsum dolor sit amet</i>, consectetuer adipiscing
+        elit, sed diem nonummy nibh euismod tincidunt ut lacreet <i>dolore magna</i>aliguam erat volutpat.</p>
+    </div>
 </body>
 </html>

@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Относительные единицы</title>
+    <title>Соседние селекторы</title>
     <style>
-        h1{font-size: 30px;}
-        p{font-size: 1.5em;}
+        b+i{
+            color: red;
+        }
     </style>
 </head>
 <body>
-    <h1>Заголовок размером 30 пикселов</h1>
-    <p>Размер текста 1.5 em</p>
+    <p>Lorem <b>ipsum </b> dolor sit amet,
+        <i>consectetuer</i> adipiscing elit.
+    </p>
+    <p>Lorem ipsum dolor sit amet, <i>consectetuer</i> adipiscing elit.</p>
 </body>
 </html>
