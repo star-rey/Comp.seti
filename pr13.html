@@ -1,22 +1,18 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Селекторы атрибутов</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Псевдоэлементы в CSS3</title>
     <style>
-    Q {
-    font-style: italic;
-    quotes: "\00AB" "\00BB";
-    }
-    Q[title] {
-    color: maroon;
-    }
+        p::selection{
+            color: white;
+            background-color: black;
+        }
     </style>
 </head>
 <body>
-
-<p>Продолжая известный закон Мерфи, который гласит: <q>Если неприятность может случиться, то она обязательно случится</q>, можем ввести свое наблюдение:
-<q title="Из законов фергюссона-Мержевича">После того, как веб-страница будет корректно отображаться в одном браузере, выяснится, что она неправильно показывается в другом</q>.</p>
-
+    <p>Псевдоэлементы в CSS3 позволяют форматировать текст.</p>
+    <b>ЗМК МДК 02.01</b>
 </body>
 </html>

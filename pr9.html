@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Селекторы в CSS3</title>
     <style>
-        h2~div{color: red;}
+        :enabled{
+            border: 2px black solid;
+            color: red;
+        }
     </style>
 </head>
 <body>
-<h2>Заголовок</h2>
-<p>Аннотация</p>
-<div>
-    <p>Текст первого блока</p>
-</div>
-<div>
-    <p>Текст второго блока</p>
-</div>    
+    <p><input type="text" value="enabled"/></p>
+    <p><input type="text" disabled value="disabled"></p>
 </body>
 </html>
