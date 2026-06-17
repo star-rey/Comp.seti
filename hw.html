@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #counter {
+            font-size: 60px;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 10px;
+        }
+        .red {
+            color: red;
+        }
+        .blue {
+            color: blue;
+        }
+        .normal {
+            color: black;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        button {
+            padding: 10px 25px;
+            font-size: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        #minus {
+            background-color: #f44336;
+        }
+        #reset {
+            background-color: #999;
+            font-size: 16px;
+            padding: 8px 20px;
+            margin-top: 15px;
+        }
+        #status {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Счётчик</h1>
+        <div id="counter">0</div>
+        <div class="buttons">
+            <button id="minus">-1</button>
+            <button id="plus">+1</button>
+        </div>
+        <button id="reset">Сбросить</button>
+        <p id="status">Счётчик работает</p>
+    </div>
+
+    <script>
+        let counter = 0;
+        let counterElement = document.getElementById('counter');
+        let plusButton = document.getElementById('plus');
+        let minusButton = document.getElementById('minus');
+        let resetButton = document.getElementById('reset');
+        let statusElement = document.getElementById('status');
+        function updateDisplay() {
+            counterElement.textContent = counter;
+            counterElement.classList.remove('red', 'blue', 'normal');
+            if (counter > 10) {
+                counterElement.classList.add('red');
+                statusElement.textContent = 'Число больше 10!';
+                statusElement.style.color = 'red';
+            } else if (counter < 0) {
+                counterElement.classList.add('blue');
+                statusElement.textContent = 'Число меньше 0!';
+                statusElement.style.color = 'blue';
+            } else {
+                counterElement.classList.add('normal');
+                statusElement.textContent = 'Всё хорошо';
+                statusElement.style.color = '#666';
+            }
+        }
+        plusButton.onclick = function() {
+            counter = counter + 1;
+            updateDisplay();
+        };
+
+        minusButton.onclick = function() {
+            counter = counter - 1;
+            updateDisplay();
+        };
+
+        resetButton.onclick = function() {
+            counter = 0;
+            updateDisplay();
+        };
+        updateDisplay();
+    </script>
+</body>
+</html>
