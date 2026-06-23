@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Селекторы в CSS3</title>
+    <title></title>
     <style>
-        :enabled{
-            border: 2px black solid;
-            color: red;
-        }
+.p1{border-top:8px dotted black; border-left:8px solid black; border-right:8px solid black; border-bottom:8px dashed black;}
+.p2{border:8px dashed black;}
+.p3{border:8px dotted black;}
+.p4{border:8px double black;} 
+p{
+    padding:10px;
+    text-align:center;
+}
     </style>
 </head>
 <body>
-    <p><input type="text" value="enabled"/></p>
-    <p><input type="text" disabled value="disabled"></p>
+<p class="p1">This is some text in a paragraph.</p>
+<p class="p2">This is some text in a paragraph.</p>
+<p class="p3">This is some text in a paragraph.</p>
+<p class="p4">This is some text in a paragraph.</p>
 </body>
 </html>

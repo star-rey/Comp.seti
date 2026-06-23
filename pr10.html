@@ -3,28 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Селекторы CSS3</title>
+    <title></title>
     <style>
-        :checked+span{
-            color: red;
-            font-weight: bold;
-        }
+    .box{
+    background:#1ec7d7;
+    border:2px solid #333;
+    padding:20px;
+    margin:15px;
+}
+.b1{border-radius:50px 0 0 50px;}
+.b2{border-radius:40px 10px;}
+.b3{border-radius:13em/3em;}
+.b4{border-radius:13em 0.5em 1em 0.5em;}
+.b5{border-radius:8px;}
     </style>
 </head>
 <body>
-    <p>
-        <input type="checkbox" checked name="html15"/><span>HTML5</span>
-    </p>
-    <p>
-        <input type="checkbox" name="dotnet"/><span>.NET</span>
-    </p>
-    <P><input type="checkbox" name="java"/><span>Java</span></P>
-    <h2>Укажите пол</h2>
-    <p>
-        <input type="radio" value="man" checked name="gender"/><span>мужской</span>
-    </p>
-    <p>
-        <input type="radio" value="woman" name="gender"/><span>женский</span>
-    </p>
+<div class="box b1">border-radius: 50px 0 0 50px;</div>
+<div class="box b2">border-radius: 40px 10px;</div>
+<div class="box b3">border-radius: 13em/3em;</div>
+<div class="box b4">border-radius: 13em 0.5em 1em 0.5em;</div>
+<div class="box b5">border-radius: 8px;</div>
 </body>
 </html>
