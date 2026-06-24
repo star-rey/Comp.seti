@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+<input type="number" id="height" placeholder="Рост (см)">
+<br><br>
+<input type="number" id="weight" placeholder="Вес (кг)">
+<br><br>
+<button id="calcBtn">
+Рассчитать ИМТ
+</button>
+<div id="resultBox">
+<p id="imtResult"></p>
+<p id="commentResult"></p>
+<p id="recommendationResult"></p>
+</div>
+<script>
+
+let calcBtn = document.querySelector("#calcBtn");
+let heightInput = document.querySelector("#height");
+let weightInput = document.querySelector("#weight");
+
+let imtResult =
+document.querySelector("#imtResult");
+
+let commentResult =
+document.querySelector("#commentResult");
+let recommendationResult =document.querySelector("#recommendationResult");
+let resultBox =document.querySelector("#resultBox");
+calcBtn.onclick = function(){
+    let height =Number(heightInput.value);
+    let weight =Number(weightInput.value);
+    if(heightInput.value === "" || weightInput.value === ""){
+        imtResult.textContent = "Введите рост и вес";
+        return;
+    }
+    if(height < 50 || height > 250 || weight < 10 || weight > 300){
+        imtResult.textContent ="Данные введены неверно";
+        return;
+    }
+    if(height <= 0 || weight <= 0){
+        imtResult.textContent ="Значения должны быть больше нуля";
+        return;
+    }
+    let heightM = height / 100;
+    let imt =weight / (heightM * heightM);
+    let imtRounded =imt.toFixed(2);
+    let comment = "";
+    let recommendation = "";
+    let color = "";
+    if(imt < 16){
+        comment ="Выраженный дефицит массы тела";
+        recommendation ="Рекомендуется сбалансированное питание с повышенной калорийностью";
+        color = "red";
+    }else if(imt < 18.5){
+        comment ="Недостаточная масса тела";
+        recommendation ="Рекомендуется сбалансированное питание с повышенной калорийностью";
+        color = "orange";
+    }else if(imt < 25){
+        comment ="Нормальная масса тела";
+        recommendation ="Отличный результат! Поддерживайте здоровый образ жизни";
+        color = "green";
+    }else if(imt < 30){
+        comment ="Избыточная масса тела";
+        recommendation ="Рекомендуется увеличить физическую активность и скорректировать питание";
+        color = "orange";
+    }else if(imt < 35){
+        comment ="Ожирение I степени";
+        recommendation ="Рекомендуется консультация врача-диетолога";
+        color = "red";
+    }else if(imt < 40){
+        comment ="Ожирение II степени";
+        recommendation ="Рекомендуется консультация врача-диетолога";
+        color = "darkred";
+    }else{
+        comment ="Ожирение III степени";
+        recommendation ="Рекомендуется консультация врача-диетолога";
+        color = "maroon";
+    }
+    imtResult.textContent ="ИМТ: " + imtRounded;
+    commentResult.textContent ="Комментарий: " + comment;
+    recommendationResult.textContent ="Рекомендация: " + recommendation;
+    resultBox.style.backgroundColor =color;
+    resultBox.style.color = "white";
+    resultBox.style.padding = "10px";
+};
+</script>
+</body>
+</html>

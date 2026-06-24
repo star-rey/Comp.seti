@@ -1,16 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Чётное или нечётное</title>
 </head>
 <body>
-    <table width="600" align="center" border="1" style="border-collapse: collapse;">
-        <tr>
-            <td width="150" valign="top"></td>
-            <td width="450" valign="top"></td>
-        </tr>
-    </table>
+
+    <input type="number" id="number" placeholder="Введите число">
+    <button id="checkBtn">Проверить</button>
+    <p id="result"></p>
+
+    <script>
+        let checkBtn = document.querySelector("#checkBtn");
+        let numberInput = document.querySelector("#number");
+        let resultMsg = document.querySelector("#result");
+
+        function checkNumber(num) {
+            if (num === "") {
+                return "Введите число";
+            } else if (num % 2 === 0) {
+                return "Чётное";
+            } else {
+                return "Нечётное";
+            }
+        }
+
+        checkBtn.onclick = function() {
+            let number = numberInput.value;
+            let result = checkNumber(number);
+
+            resultMsg.textContent = result;
+
+            if (result === "Чётное") {
+                resultMsg.style.color = "green";
+            } else {
+                resultMsg.style.color = "red";
+            }
+        };
+    </script>
 </body>
 </html>
