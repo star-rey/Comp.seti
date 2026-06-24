@@ -1,67 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 </head>
 <body>
-<input type="tel" id="phone" placeholder="Введите номер">
-<button id="checkBtn">Проверить номер</button>
-<p id="message"></p>
+<button id="countBtn">Подсчитать</button>
+<p id="more"></p>
+<p id="less"></p>
+<p id="equal"></p>
+<p id="sum"></p>
 <script>
-let checkBtn = document.querySelector("#checkBtn");
-let phoneInput = document.querySelector("#phone");
-let message = document.querySelector("#message");
-
-function checkPhone(phoneNumber){
-
-    if(phoneNumber === ""){
-        return "Введите номер телефона";
-    }
-
-    let cleanedNumber = phoneNumber;
-
-    if(cleanedNumber[0] === "+"){
-        cleanedNumber = cleanedNumber.slice(1);
-    }
-
-    for(let i = 0; i < cleanedNumber.length; i++){
-        if(cleanedNumber[i] < "0" || cleanedNumber[i] > "9"){
-            return "Номер содержит недопустимые символы";
+let numbers =[5, 12, 8, 130, 44, 3, 7, 21];
+let countBtn =document.querySelector("#countBtn");
+let more =document.querySelector("#more");
+let less =document.querySelector("#less");
+let equal =document.querySelector("#equal");
+let sumText =document.querySelector("#sum");
+countBtn.onclick = function(){
+    let moreCount = 0;
+    let lessCount = 0;
+    let equalCount = 0;
+    let sum = 0;
+    for(let i = 0; i < numbers.length; i++){
+        if(numbers[i] > 10){
+            moreCount++;
         }
+        else if(numbers[i] < 10){
+            lessCount++;
+        }
+        else{
+            equalCount++;
+        }
+        sum += numbers[i];
     }
-
-    if(phoneNumber.startsWith("+7") &&
-       phoneNumber.length === 12){
-        return "ok";
-    }
-
-    if(phoneNumber.startsWith("8") &&
-       phoneNumber.length === 11){
-        return "ok";
-    }
-
-    if(cleanedNumber.length === 10){
-        return "ok";
-    }
-
-    return "Неверная длина номера";
-}
-
-checkBtn.onclick = function(){
-
-    let phone = phoneInput.value;
-    let result = checkPhone(phone);
-
-    if(result === "ok"){
-        message.textContent =
-        "Номер телефона верный";
-        message.style.color = "green";
-    }else{
-        message.textContent = result;
-        message.style.color = "red";
-    }
+    more.textContent ="Чисел больше 10: " +moreCount;
+    less.textContent ="Чисел меньше 10: " +lessCount;
+    equal.textContent ="Чисел равных 10: " +equalCount;
+    sumText.textContent ="Сумма элементов: " +sum;
 };
 </script>
 </body>

@@ -2,26 +2,20 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Пример А</title>
+    <title>Пример А - Перебор массива</title>
 </head>
 <body>
-    <input type="text" id="userName" placeholder="Введите имя">
-    <button id="checkBtn">Проверить</button>
-    <p id="message"></p>
+    <h2>Откройте консоль (F12)</h2>
+    <button id="showBtn">Показать студентов</button>
 
     <script>
-        let button = document.querySelector("#checkBtn");
-        let input = document.querySelector("#userName");
-        let output = document.querySelector("#message");
-
+        let студенты = ["Анна", "Петр", "Иван", "Мария", "Ольга", "Дмитрий"];
+        let button = document.querySelector("#showBtn");
+        
         button.onclick = function() {
-            let name = input.value;
-            if (name === "") {
-                output.textContent = "Ошибка: имя не может быть пустым!";
-                output.style.color = "red";
-            } else {
-                output.textContent = "Привет, " + name + "!";
-                output.style.color = "green";
+            console.log("Список студентов:");
+            for (let i = 0; i < студенты.length; i++) {
+                console.log((i + 1) + ". " + студенты[i]);
             }
         };
     </script>

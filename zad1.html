@@ -2,41 +2,25 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Чётное или нечётное</title>
+    <title></title>
 </head>
 <body>
-
-    <input type="number" id="number" placeholder="Введите число">
-    <button id="checkBtn">Проверить</button>
-    <p id="result"></p>
-
-    <script>
-        let checkBtn = document.querySelector("#checkBtn");
-        let numberInput = document.querySelector("#number");
-        let resultMsg = document.querySelector("#result");
-
-        function checkNumber(num) {
-            if (num === "") {
-                return "Введите число";
-            } else if (num % 2 === 0) {
-                return "Чётное";
-            } else {
-                return "Нечётное";
-            }
-        }
-
-        checkBtn.onclick = function() {
-            let number = numberInput.value;
-            let result = checkNumber(number);
-
-            resultMsg.textContent = result;
-
-            if (result === "Чётное") {
-                resultMsg.style.color = "green";
-            } else {
-                resultMsg.style.color = "red";
-            }
-        };
-    </script>
+<h2>Список книг</h2>
+<ol id="bookList"></ol>
+<p id="message"></p>
+<script>
+let books = ["Война и мир", "Преступление и наказание", "Мастер и Маргарита", "Гарри Поттер", "1984"];
+let bookList = document.querySelector("#bookList");
+let message = document.querySelector("#message");
+if (books.length === 0) {
+    message.textContent = "Список пуст";
+} else {
+    for (let i = 0; i < books.length; i++) {
+        let li = document.createElement("li");
+        li.textContent = books[i];
+        bookList.appendChild(li);
+    }
+}
+</script>
 </body>
 </html>

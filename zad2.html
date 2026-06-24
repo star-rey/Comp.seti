@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Калькулятор скидки</title>
+    <meta charset="UTF-8">
+    <title></title>
 </head>
 <body>
-<input type="number" id="price" placeholder="Стоимость товара">
-<input type="number" id="age" placeholder="Возраст покупателя">
-<button id="calcBtn">Рассчитать</button> 
+<input type="text" id="cityInput" placeholder="Введите город">
+<button id="findBtn">Найти</button>
 <p id="result"></p>
 <script>
-let calcBtn = document.querySelector("#calcBtn");
-let priceInput = document.querySelector("#price");
-let ageInput = document.querySelector("#age");
+let cities = ["Москва", "Санкт-Петербург", "Казань", "Новосибирск", "Екатеринбург"];
+let cityInput = document.querySelector("#cityInput");
+let findBtn = document.querySelector("#findBtn");
 let result = document.querySelector("#result");
-function getDiscount(age){
-    if(age < 18){
-        return 10;
-    } else if(age >= 60){
-        return 20;
+function findCity(cityName){
+    let searchCity = cityName.toLowerCase();
+    for(let i = 0; i < cities.length; i++){
+        if(cities[i].toLowerCase() === searchCity){
+            return true;
+        }
     }
-    return 0;
+    return false;
 }
-calcBtn.onclick = function(){
-    let price = Number(priceInput.value);
-    let age = Number(ageInput.value);
-    if(priceInput.value === "" || ageInput.value === ""){
-        result.textContent = "Введите цену и возраст";
+findBtn.onclick = function(){
+    let city = cityInput.value;
+    if(city === ""){
+        result.textContent ="Введите название города";
         result.style.color = "red";
         return;
     }
-    let discount = getDiscount(age);
-    let finalPrice = price - (price * discount / 100);
-    result.textContent =
-    "Итоговая цена: " + finalPrice + " рублей";
-    result.style.color = "green";
+    if(findCity(city)){
+        result.textContent ="Город найден";
+        result.style.color = "green";
+    }else{
+        result.textContent ="Город не найден";
+        result.style.color = "red";
+    }
 };
 </script>
 </body>
 </html>
-

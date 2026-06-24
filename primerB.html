@@ -2,30 +2,31 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Пример Б</title>
+    <title>Пример Б - Вывод списка</title>
+    <style>
+        .list-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+    </style>
 </head>
 <body>
-    <input type="number" id="num1" placeholder="Число 1">
-    <input type="number" id="num2" placeholder="Число 2">
-    <button id="sumBtn">Сложить</button>
-    <p id="result"></p>
+    <div class="list-container">
+        <h2>🍎 Список продуктов</h2>
+        <ul id="productList"></ul>
+    </div>
 
     <script>
-        function sum(a, b) {
-            return a + b;
+        let продукты = ["Молоко", "Хлеб", "Яйца", "Масло", "Сыр", "Колбаса"];
+        let список = document.querySelector("#productList");
+        
+        for (let i = 0; i < продукты.length; i++) {
+            список.innerHTML = список.innerHTML + "<li>" + продукты[i] + "</li>";
         }
-
-        let btn = document.querySelector("#sumBtn");
-        let input1 = document.querySelector("#num1");
-        let input2 = document.querySelector("#num2");
-        let resultP = document.querySelector("#result");
-
-        btn.onclick = function() {
-            let a = Number(input1.value);
-            let b = Number(input2.value);
-            let total = sum(a, b);
-            resultP.textContent = "Сумма: " + total;
-        };
+        
+        console.log("Всего продуктов: " + продукты.length);
     </script>
 </body>
 </html>

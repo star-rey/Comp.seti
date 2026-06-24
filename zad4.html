@@ -1,100 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Калькулятор чаевых</title>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .done{
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+
 </head>
 <body>
+<input
+type="text"
+id="taskInput"
+placeholder="Новое дело">
 
-<input type="number" id="bill" placeholder="Сумма счёта">
-<br><br>
-
-<input type="number" id="tips" placeholder="Процент чаевых">
-<br><br>
-
-<input type="number" id="people" placeholder="Количество человек" value="1">
-<br><br>
-
-<button id="calcBtn">Рассчитать</button>
-
-<p id="tipResult"></p>
-<p id="totalResult"></p>
-<p id="personResult"></p>
-
+<button id="addTaskBtn">Добавить</button>
+<button id="clearAllBtn">Очистить все</button>
+<button id="deleteDoneBtn">Удалить выполненные</button>
+<p id="counter">Всего дел: 0</p>
+<ul id="taskList"></ul>
+<p id="errorMsg"style="color:red;"></p>
 <script>
-
-let calcBtn = document.querySelector("#calcBtn");
-
-let billInput = document.querySelector("#bill");
-let tipsInput = document.querySelector("#tips");
-let peopleInput = document.querySelector("#people");
-
-let tipResult = document.querySelector("#tipResult");
-let totalResult = document.querySelector("#totalResult");
-let personResult = document.querySelector("#personResult");
-
-function calculateTips(bill, percent){
-    return bill * (percent / 100);
+let taskInput =document.querySelector("#taskInput");
+let addTaskBtn =document.querySelector("#addTaskBtn");
+let clearAllBtn =document.querySelector("#clearAllBtn");
+let deleteDoneBtn =document.querySelector("#deleteDoneBtn");
+let taskList =document.querySelector("#taskList");
+let counter =document.querySelector("#counter");
+let errorMsg =document.querySelector("#errorMsg");
+function updateCounter(){
+    let count =document.querySelectorAll("#taskList li").length;
+    counter.textContent ="Всего дел: " + count;
+}
+function createTaskItem(taskText){
+    let li =document.createElement("li");
+    let span =document.createElement("span");
+    span.textContent = taskText;
+    span.onclick = function(){
+        span.classList.toggle("done");
+    };
+    let deleteBtn =document.createElement("button");
+    deleteBtn.textContent ="Удалить";
+    deleteBtn.onclick =function(){
+        li.remove();
+        updateCounter();
+    };
+    li.appendChild(span);
+    li.appendChild(deleteBtn);
+    return li;
 }
 
-calcBtn.onclick = function(){
-
-    let bill = Number(billInput.value);
-    let percent = Number(tipsInput.value);
-    let people = Number(peopleInput.value);
-
-    if(
-        billInput.value === "" ||
-        tipsInput.value === "" ||
-        peopleInput.value === ""
-    ){
-        tipResult.textContent =
-        "Заполните все поля";
-
+addTaskBtn.onclick =function(){
+    let task =taskInput.value.trim();
+    if(task === ""){
+        errorMsg.textContent =
+        "Введите текст дела";
         return;
     }
-
-    if(bill < 0){
-        tipResult.textContent =
-        "Сумма счёта не может быть меньше 0";
-        return;
-    }
-
-    if(percent < 0 || percent > 50){
-        tipResult.textContent =
-        "Процент чаевых должен быть от 0 до 50";
-        return;
-    }
-
-    if(people < 1){
-        tipResult.textContent =
-        "Количество человек должно быть не меньше 1";
-        return;
-    }
-
-    let tips = calculateTips(bill, percent);
-
-    let total = bill + tips;
-
-    let perPerson = total / people;
-
-    if(people > 1){
-        perPerson = perPerson.toFixed(2);
-    }
-
-    tipResult.textContent =
-    "Сумма чаевых: " + tips + " рублей";
-
-    totalResult.textContent =
-    "Общая сумма: " + total + " рублей";
-
-    personResult.textContent =
-    "Каждый должен заплатить по " +
-    perPerson +
-    " рублей (" +
-    people +
-    " человек)";
+    errorMsg.textContent = "";
+    let taskItem =createTaskItem(task);
+    taskList.appendChild(taskItem);
+    taskInput.value = "";
+    updateCounter();
 };
+clearAllBtn.onclick =function(){
+    taskList.innerHTML = "";
+    updateCounter();
+};
+deleteDoneBtn.onclick =function(){
+    let doneTasks = document.querySelectorAll(".done");
+    for(let i = 0;
+        i < doneTasks.length;
+        i++){
+
+        doneTasks[i]
+        .parentElement
+        .remove();
+    }
+
+    updateCounter();
+};
+
 </script>
+
 </body>
 </html>
